@@ -7,19 +7,28 @@
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <style>
+        .card {
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container-fluid ">
+<div class="container-lg d-flex align-items-center" style="height: 100vh;">
     <div class="row">
         <div class="col-lg-6">
-            <!-- Button and message that redirects to orders-->
+            <div class="card">
+                <img src="{% static 'gcash1.jpg' %}" class="card-img" alt="">
+            </div>
         </div>
-        <div class="col-lg-6">
-            <img src="{% static 'gcash.jpg' %}" alt="">
+        <div class="col-lg-6 d-flex align-items-center">
+            <div>
+                <h5>Send the payment via the GCash QR code</h5>
+                <a href="{% url 'home' %}" class="btn btn-primary">Go back to home</a>
+            </div>
         </div>
     </div>
-    
 </div>
 
 </body>
