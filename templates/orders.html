@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+  
+    <div class="container-lg mt-5">
+        <h2>Orders</h2>
+
+        <!-- Pending Orders -->
+        {% if pending_orders %}
+        <h3>Pending Orders</h3>
+        <ul class="list-group">
+            {% for order in pending_orders %}
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Order #{{ order.id }}</h5>
+                    <small>Status: {{ order.status }}</small>
+                </div>
+                <p class="mb-1">Shipping Address: {{ order.shipping_address }}</p>
+                <small>Contact Number: {{ order.contact_number }}</small>
+                <p class="mb-1">Products:</p>
+                <ul>
+                    {% for order_item in order.orderitem_set.all %}
+                        <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Total Price: ${{ order.total_price }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Shipped Orders -->
+        {% if shipped_orders %}
+        <h3>Shipped Orders</h3>
+        <ul class="list-group">
+            {% for order in shipped_orders %}
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Order #{{ order.id }}</h5>
+                    <small>Status: {{ order.status }}</small>
+                </div>
+                <p class="mb-1">Shipping Address: {{ order.shipping_address }}</p>
+                <small>Contact Number: {{ order.contact_number }}</small>
+                <p class="mb-1">Products:</p>
+                <ul>
+                    {% for order_item in order.orderitem_set.all %}
+                        <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Total Price: ${{ order.total_price }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Delivered Orders -->
+        {% if delivered_orders %}
+        <h3>Delivered Orders</h3>
+        <ul class="list-group">
+            {% for order in delivered_orders %}
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Order #{{ order.id }}</h5>
+                    <small>Status: {{ order.status }}</small>
+                </div>
+                <p class="mb-1">Shipping Address: {{ order.shipping_address }}</p>
+                <small>Contact Number: {{ order.contact_number }}</small>
+                <p class="mb-1">Products:</p>
+                <ul>
+                    {% for order_item in order.orderitem_set.all %}
+                        <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Total Price: ${{ order.total_price }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Cancelled Orders -->
+        {% if cancelled_orders %}
+        <h3>Cancelled Orders</h3>
+        <ul class="list-group">
+            {% for order in cancelled_orders %}
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Order #{{ order.id }}</h5>
+                    <small>Status: {{ order.status }}</small>
+                </div>
+                <p class="mb-1">Shipping Address: {{ order.shipping_address }}</p>
+                <small>Contact Number: {{ order.contact_number }}</small>
+                <p class="mb-1">Products:</p>
+                <ul>
+                    {% for order_item in order.orderitem_set.all %}
+                        <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Total Price: ${{ order.total_price }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Display message if no orders -->
+        {% if not pending_orders and not shipped_orders and not delivered_orders and not cancelled_orders %}
+            <p>You have not made any order yet.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

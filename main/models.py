@@ -44,6 +44,7 @@ class CartItem(models.Model):
         return f"{self.quantity} x {self.product.name} in Cart for {self.order.user.username}"
 
 class Order(models.Model):
+    user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='orders')
     STATUS_CHOICES = (
         ('Pending', 'Pending'),
         ('Shipped', 'Shipped'),
@@ -51,9 +52,19 @@ class Order(models.Model):
         ('Cancelled', 'Cancelled'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='orders')
     contact_number = models.CharField(max_length=20, null=True, blank=True)
     shipping_address = models.TextField(null=False)
+    created = models.DateField(auto_now_add=True)
+    total_price = models.FloatField(null=True)
 
     def __str__(self):
-        return f"Order #{self.id}: {self.status}"
+        return f"Order for {self.user.username}#{self.id}: {self.status}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    additional_notes = models.TextField(null=True)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} in Order for {self.order.user.username}#{self.order.id}"

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from . models import Product, Order, Cart, CartItem, MyUser
+from . models import Product, Order, Cart, CartItem, MyUser, OrderItem
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
@@ -124,18 +124,28 @@ def room(request, product_id):
     return render(request, 'room.html', {'product': product})
 
 
+from django.shortcuts import redirect
+
+
+@login_required
 def cart(request):
+    print(request.user)  # Debugging statement
     if request.method == 'POST':
         cart_id = request.POST.get('cart_id')
         gcash_number = request.POST.get('gcash_number')
         shipping_address = request.POST.get('address')
         
         cart = Cart.objects.get(id=cart_id)
-        cart.save()
+        cart.save() 
         
-        order = Order.objects.create(cart=cart, contact_number=gcash_number, shipping_address=shipping_address)
+        order = Order.objects.create(user=request.user, contact_number=gcash_number, shipping_address=shipping_address, total_price=cart.total_price)
         
-        return redirect('payment.html')
+        for cart_item in cart.cartitem_set.all():
+            OrderItem.objects.create(order=order, product=cart_item.product, quantity=cart_item.quantity, additional_notes=cart_item.additional_notes)
+   
+        cart.delete()  
+        
+        return render(request, 'payment.html')
         
     else:
         cart_items = CartItem.objects.filter(order__user=request.user)
@@ -151,7 +161,28 @@ def cart(request):
         
         return render(request, 'cart.html', {'cart_items': cart_items, 'cart': cart, 'has_cart': has_cart})
     
+
+@login_required
+def orders(request):
+
+    user_orders = Order.objects.filter(user=request.user)
+
+
+    pending_orders = user_orders.filter(status='Pending')
+    shipped_orders = user_orders.filter(status='Shipped')
+    delivered_orders = user_orders.filter(status='Delivered')
+    cancelled_orders = user_orders.filter(status='Cancelled')
+
+    context = {
+        'pending_orders': pending_orders,
+        'shipped_orders': shipped_orders,
+        'delivered_orders': delivered_orders,
+        'cancelled_orders': cancelled_orders,
+    }
+
+    return render(request, 'orders.html', context)
+
+
+    
 def payment(request):
     return render(request, 'payment.html')
-
- 

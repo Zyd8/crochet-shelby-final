@@ -12,5 +12,6 @@ urlpatterns = [
     path('create/', views.create_product, name='create_product'),
     path('room/<int:product_id>/', views.room, name='room'),
     path('cart/', views.cart, name='cart'),
+    path('orders/', views.orders, name="orders"),
     path('payment/', views.payment, name='payment'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
