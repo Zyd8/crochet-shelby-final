@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <style>
+        .card {
+            width: 250px; 
+            height: 350px;
+            margin-bottom: 20px; 
+            margin-right: 20px;
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            height: 100px;
+            overflow: hidden; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dummy Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'create_product' %}">Create</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'cart' %}">Cart</a>
+              </li>
+
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'signout' %}">Sign out</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'signin' %}">Sign in </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    
+    <div class="container-lg mt-5">
+        <h2>Products</h2>
+        
+        <!-- Audio Products -->
+        <h3>Audio</h3>
+        <div class="row">
+            {% for product in audio_products %}
+                <div class="col-lg-3 col-md-4">
+                    <a href="{% url 'room' product.id %}">
+                        <div class="card">
+                            <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Home Products -->
+        <h3>Home</h3>
+        <div class="row">
+            {% for product in home_products %}
+                <div class="col-lg-3 col-md-4">
+                    <a href="{% url 'room' product.id %}">
+                        <div class="card">
+                            <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Accessories Products -->
+        <h3>Accessories</h3>
+        <div class="row">
+            {% for product in accessories_products %}
+                <div class="col-lg-3 col-md-4">
+                    <a href="{% url 'room' product.id %}">
+                        <div class="card">
+                            <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Price: ${{ product.price }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

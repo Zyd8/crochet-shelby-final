@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</head>
+<body>
+
+    {% if has_cart %}
+    <div class="container-lg">
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Current Cart</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in cart_items %}
+                                <tr>
+                                    <td>{{ item.product.name }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>${{ item.product.price }}</td>
+                                    <td>${{ item.total }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p>Shipping Fee: ${{ cart.shipping_fee }}</p>
+                        <p>Total: ${{ cart.total_price }}</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="cart_id" value="{{ cart.id }}">
+                            <div class="mb-3">
+                                <label for="gcash_number" class="form-label">GCash Number</label>
+                                <input type="text" class="form-control" id="gcash_number" name="gcash_number" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Order Now</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="container-lg text-center mt-5">
+        <h2>You have no items in your cart yet.</h2>
+    </div>
+    {% endif %}
+    
+</body>
+</html>
