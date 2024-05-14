@@ -6,6 +6,7 @@ from . models import Product, Order, Cart, CartItem, MyUser, OrderItem
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def home(request):
@@ -83,6 +84,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'price',  'category', 'image1', 'image2', 'image3', 'description']
 
+@staff_member_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
