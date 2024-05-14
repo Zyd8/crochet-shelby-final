@@ -7,6 +7,11 @@
     <title>Cart</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 <body>
 
@@ -33,14 +38,14 @@
                                 <tr>
                                     <td>{{ item.product.name }}</td>
                                     <td>{{ item.quantity }}</td>
-                                    <td>${{ item.product.price }}</td>
-                                    <td>${{ item.total }}</td>
+                                    <td>₱{{ item.product.price }}</td>
+                                    <td>₱{{ item.total }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <p>Shipping Fee: ${{ cart.shipping_fee }}</p>
-                        <p>Total: ${{ cart.total_price }}</p>
+                        <p>Shipping Fee: ₱{{ cart.shipping_fee }}</p>
+                        <p>Total: ₱{{ cart.total_price }}</p>
                         <form method="post">
                             {% csrf_token %}
                             <input type="hidden" name="cart_id" value="{{ cart.id }}">
