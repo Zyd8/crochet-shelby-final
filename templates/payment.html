@@ -7,25 +7,143 @@
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    <!--Fonts-->
+    <!--font-family: "Poppins", sans-serif;-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Freckle+Face&family=Frijole&family=Graduate&family=IM+Fell+Double+Pica+SC&family=Inter:wght@100..900&family=Jacquarda+Bastarda+9&family=Kode+Mono:wght@400..700&family=Lacquer&family=Lumanosimo&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Protest+Revolution&family=Quicksand:wght@300..700&family=Shadows+Into+Light&family=Teko:wght@300&family=Tektur:wght@400;700&display=swap" rel="stylesheet">
+    <!--font-family: 'Brittany Signature', sans-serif;-->
+    <link href="https://fonts.cdnfonts.com/css/brittany-signature" rel="stylesheet">
     <style>
         .card {
             max-width: 100%;
+        }
+
+        #gcash{
+            width: 400px;
+        }
+
+        #text1{
+            font-family: "Poppins", sans-serif;
+            font-size: 70px;
+        }
+
+        #text2{
+           font-family: 'Brittany Signature', sans-serif;
+           font-size: 30px;
+           font-style: italic;
+           margin-top: -12px;
+        }
+
+        #text3{
+            font-family: "Poppins", sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        #text4{
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        #ShelbyC-text{
+            color: #55286F;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+        }
+
+        #Shelby-email-text{
+            color: #55286F;
+            font-family: "Poppins", sans-serif;
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .btn1{
+            margin-right: -30px;
+        }
+
+        .btn1 {
+            display: flex;
+            justify-content: space-around;
+            font-size: 10px;
+            border: none;
+            padding: 2px 1px;
+            perspective: 40rem;
+            border-radius: 10px;
+            background-color: #210B2C;
+            box-shadow: 0 2px 15px #D8B4E2;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn1 a {
+            position: relative;
+            z-index: 1;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn1::before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 250%;
+            height: 250%;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+            background: linear-gradient(75deg, #55286F, #210B2C);
+            z-index: -1;
+            transition: transform 2s;
+        }
+
+        .btn1:hover::before {
+            transform: rotateY(90deg); 
+        }
+
+        @media screen and (max-width: 768px) {
+            body{
+                margin-top: 250px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container-lg d-flex align-items-center" style="height: 100vh;">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <img src="{% static 'gcash1.jpg' %}" class="card-img" alt="">
+<div class="container-fluid d-flex align-items-center" style="height: 100vh;">
+    <div>
+        <div class="row">
+            <div class="col-md-5">
+                <h2 class="d-flex justify-content-center" id="ShelbyC-text">
+                    Shelby Crochet
+                </h2>
+                <h4 class="d-flex justify-content-center" id="Shelby-email-text">
+                    ShelbyCrochet@gmail.com
+                </h4>
+                <div class="d-flex justify-content-center">
+                    <img src="{% static 'gcash2.jpg' %}" class="card-img" class="d-flex justify-content-center" id="gcash">
+                </div>
             </div>
-        </div>
-        <div class="col-lg-6 d-flex align-items-center">
-            <div>
-                <h5>Send the payment via the GCash QR code</h5>
-                <a href="{% url 'home' %}" class="btn btn-primary">Go back to home</a>
+            <div class="col-md-7 d-flex align-items-center justify-content-center p-3" style="background-image: url(../static/Background.png); background-size: cover;">
+                <div class="d-flex flex-column justify-content-around align-items-center text-light">
+                    <div class="text-center mb-5">
+                        <h1 id="text1">THANK YOU</h1>
+                        <h5 id="text2">for your Purchase!</h5>
+                    </div>
+
+                    <p class="mb-5 text-center" id="text3">"Crafting comfort, One crochet stitch at a time"</p>
+                    <h5 class="mb-5 text-center" id="text4">Send the payment via the GCash QR code</h5>
+
+                    <div class="d-flex justify-content-end col-10">
+                        <div class="btn1">
+                            <a href="{% url 'home' %}" class="btn">Back to homepage</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
