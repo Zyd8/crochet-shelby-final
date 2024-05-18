@@ -8,13 +8,67 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <style>
+        #btn_add{
+            transition: all 0.2s ease-in;
+            background-color: #55286F;
+            color: white;
+            
+        }
+        #btn_add:hover{
+            transform: translateY(-3px);
+            color: #ffffff;
+            background-color: #4a2661;
+        }
     </style>
 </head>
-<body>
+<body >
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
+<!-- Dummy Navbar -->
+<nav class="navbar navbar-expand-lg " style="background-color: #55286F;">
+    <div class="container-md py-3">
+      <a class="navbar-brand text-light fs-4" href="#">Navbar</a>
+      <button class="navbar-toggler bg-body-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
+
+            
+          <li class="nav-item ">
+            <a class="nav-link text-light px-3 active fw-semibold " href="{% url 'home' %}">Home</a>
+          </li>
+        
+          {% if request.user.is_staff %}
+          <li class="nav-item nav-pills  ">
+            <a class="nav-link  px-3  text-light fw-semibold" href="{% url 'create_product' %}">Create</a>
+          </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link text-light fw-semibold px-3" href="{% url 'cart' %}">Cart</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-light fw-semibold px-3" href="{% url 'orders' %}">Orders</a>
+          </li>
+
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link text-light fw-semibold px-3" href="{% url 'signout' %}">Sign out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+              <a class="nav-link text-light fw-semibold px-3" href="{% url 'signin' %}">Sign in </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+</nav>
+
+    <div class="container mt-5 my-5">
+        <div class="row ">
+            <div class="col-md-6 mb-3">
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -37,21 +91,26 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h2>{{ product.name }}</h2>
-                <p><strong>Price:</strong> ${{ product.price }}</p>
-                <p><strong>Description:</strong> {{ product.description }}</p>
+            <div class="col-md-6 px-3">
+                <h1 style="color:#55286F;"><strong>{{ product.name }}</strong></h1>
+                <p class=" fs-5 py-2" style=" color:#55286F;"><strong>Price: ${{ product.price }}</strong></p>
+                <hr>
+                <p class="text-body-secondary"> {{ product.description }}</p>
+                <hr>
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1">
+                        
+                        <label for="quantity" class="text-body-secondary">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control" style="border-color: #55286F;" value="1" min="1">
                     </div>
+                    <br>
                     <div class="form-group">
-                        <label for="additional_notes">Additional Notes:</label>
-                        <textarea id="additional_notes" name="additional_notes" class="form-control" rows="3"></textarea>
+                        <label for="additional_notes" class="text-body-secondary">Additional Notes:</label>
+                        <textarea id="additional_notes" name="additional_notes" class="form-control" style="border-color: #55286F;" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    <br>
+                    <button type="submit" class="btn "  id="btn_add"><strong>Add to Cart</strong></button>
                 </form>
             </div>
         </div>
