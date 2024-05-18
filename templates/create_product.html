@@ -9,26 +9,194 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <style>
-        .card {
+        *{
+        font-family: "Poppins", sans-serif;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .wrapper{
+            background-color: rgb(138, 43, 226);
+            padding: 0 20px 0 20px;
+        }
+        .card{
             margin: 0 auto; 
             float: none; 
-            margin-top: 50px;
             width: 400px;
         }
+        .card-title{
+            padding: 0 0 20px 10px;
+        }
+        .row{
+            width: 900px;
+            height: 550px;
+            border-radius: 10px;
+            background:#fff;
+            box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+        }
+        .text{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .text p{
+            color: #ffffff;
+            font-size: 18px;
+            text-align: center;
+        }
+        .center{
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+        .input-field{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 10px 0 10px;
+        }
+        .input-dropdown{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 10px 13px 10px; 
+        }
+        .input-description{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 10px 20px 10px;
+        }
+        select {
+            height: 25px; /* Adjust the height as needed */
+        }
+        .input-image{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 0 10px 10px 10px;  
+        }
+        textarea {
+            resize: vertical;
+            box-sizing: border-box; /* Include padding and border in the specified height */
+            height: auto; /* Allow the textarea to expand as needed */
+            /* Other textarea styles */
+        }
+        .input{
+            height: 45px;
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            margin-bottom: 25px;
+            color: #40414a;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.248);
+        }
+        .input-field label{
+            position: absolute;
+            top: -15px;
+            left: 10px;
+            pointer-events: none;
+            transition: .5s;
+        }
+        .input-field .input:focus, .input-field .input:valid{
+            border-bottom: 1px solid rgb(138, 43, 226);
+        }
+        .submit{
+            border: none;
+            outline: none;
+            height: 45px;
+            border-radius: 5px;
+            transition: .4s;
+        }
+        .submit:hover{
+            background: rgba(137, 43, 226, 0.895);
+            color: rgb(255, 255, 255);
+        }
+        .input-image img{
+            max-width: 50%;
+            height: auto;
+            margin-top: 10px;
+        }   
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Create Product</h2>
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </form>
+
+    <div class="wrapper">   
+        <div class="container main">
+            <div class="col-md-12 center">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Create Product</h2>
+                        <form method="post"  enctype="multipart/form-data"> <!-- POST means sending data to the server -->
+
+                            {% csrf_token %} <!-- Protection against unauthorized submissions -->
+                        
+                            <div class="input-field">
+                                <label for="name">Name</label>
+                                <input type="text" class="input" id="name" name="name" required autocomplete="off">
+                            </div>
+                            <div class="input-field">
+                                <label for="price">Price</label>
+                                <input type="text" class="input" id="price" name="price" required>
+                            </div>
+                            <div class="input-dropdown">
+                                <label for="category">Category </label>
+                                {{ form.category }}
+                            </div>
+                            <div class="input-image">
+                                <label for="image1">Image 1</label>
+                                <input type="file" id="image1" name="image1" onchange="previewImage('image1', 'preview1')">
+                                <img id="preview1">
+                            </div>
+                            <div class="input-image">
+                                <label for="image2">Image 2</label>
+                                <input type="file" id="image2" name="image2" onchange="previewImage('image2', 'preview2')">
+                                <img id="preview2">
+                            </div>
+                            <div class="input-image">
+                                <label for="image3">Image 3</label>
+                                <input type="file" id="image3" name="image3" onchange="previewImage('image3', 'preview3')">
+                                <img id="preview3">
+                            </div>
+                            <div class="input-description">
+                                <label for="description">Description</label>
+                                <textarea id="description" name="description" rows="4" cols="47" required></textarea>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" value="Create">
+                            </div>
+                        
+                        </form>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function previewImage(inputId, previewId) {
+            const input = document.getElementById(inputId);
+            const preview = document.getElementById(previewId);
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = ''; // Clear preview if no file selected
+            }
+        }
+    </script>
+
 </body>
 </html>
