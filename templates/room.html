@@ -20,6 +20,12 @@
             background-color: #4a2661;
         }
     </style>
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 </head>
 <body >
 
@@ -108,14 +114,18 @@
                         <textarea id="additional_notes" name="additional_notes" class="form-control" style="border-color: #55286F;" rows="3"></textarea>
                     </div>
                     <br>
-                    <button type="submit" class="btn"  id="btn_add" 
-                    {% if not request.user.is_authenticated %}disabled{% endif %}>        
-                        Add to Cart
-                    </button>
+                    <div data-bs-toggle="tooltip" title="{% if not request.user.is_authenticated %}You need to Sign in first{% endif %}">
+                        <button type="submit" class="btn" id="btn_add"
+                                {% if not request.user.is_authenticated %}disabled{% endif %}>
+                            Add to Cart
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>    
+
+
 
 </body>
 </html>
