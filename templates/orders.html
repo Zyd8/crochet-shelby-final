@@ -161,27 +161,26 @@
                 </div>
             </div>
 
+            <!-- Display message if no orders -->
+            {% if not pending_orders and not shipped_orders and not delivered_orders and not cancelled_orders %}
+            <div class="col-md-7 m-4">
+                <p>You have not made any orders yet.</p>
+                <a href="{% url 'home' %}">Browse our collection.</a>
+            </div>
+            {% endif %}
 
             <div class="card d-none d-md-block col-md-4 p-3" style="height: 400px;">
                 <div class="card-body">
                     <p class="text-center">Welcome to the Orders Section of our website! Here, you'll find a comprehensive overview of all your crochet project orders, conveniently categorized for easy navigation and tracking.</p>
-            
                     <hr>
-
                     <h5>For delivery queries, contact us.</h5>
                     <ul>
                         <li>(02) 8553 8517</li>
                         <li>09177154707</li>
                     </ul>
                 </div>
-                
-            </div>         
+            </div>
         </div>
-        
-        <!-- Display message if no orders -->
-        {% if not pending_orders and not shipped_orders and not delivered_orders and not cancelled_orders %}
-            <p>You have not made any order yet.</p>
-        {% endif %}
     </section>
 </body>
 </html>
