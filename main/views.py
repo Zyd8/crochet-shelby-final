@@ -13,11 +13,13 @@ def home(request):
     audio_products = Product.objects.filter(category='Audio')
     home_products = Product.objects.filter(category='Home')
     accessories_products = Product.objects.filter(category='Accessories')
+    all_products = Product.objects.all() 
 
     return render(request, 'home.html', {
         'audio_products': audio_products,
         'home_products': home_products,
-        'accessories_products': accessories_products
+        'accessories_products': accessories_products,
+        'all_products': all_products,
     })
 
 def room(request, product_id):

@@ -26,7 +26,45 @@
         .card-text {
             text-decoration: none;
         }
+
+        .grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -8px; 
+        }
+        .grid-item {
+            width: calc(33.33% - 16px);
+            margin: 8px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+        .grid-item img {
+            width: 100%;
+            display: block;
+        }
+        @media (max-width: 992px) {
+            .grid-item {
+                width: calc(50% - 16px);
+            }
+        }
+        @media (max-width: 576px) {
+            .grid-item {
+                width: calc(100% - 16px);
+            }
+        }
+        .card-img {
+            transition: all 1s ease;
+            -webkit-filter: blur(0px);
+            filter: blur(0px);
+        }
+        .card:hover .card-img {
+            transition: all 1s ease;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+        }
     </style>
+     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 </head>
 <body>
 
@@ -74,27 +112,26 @@
 
     </div>
     
-    
-    
+     
 
     
     <div class="container-lg mt-5 mb-5">
+
         <div class="border-2 border-bottom container-md mb-4 text-center">
         <h1 style="color: #210B2C;"><strong>Products</strong></h1>
         <p><small class="text-secondary">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
         </div>
 
-        <!-- Audio Products -->
-        <div class="container-md border-2 border-bottom pb-5 pt-3">
-            <h2 style="color: #210B2C;" class="mb-4 "><strong>Audio</strong></h2>
-            <div class="row" >
-                {% for product in audio_products %}
-                    <div class="col-lg-3 col-md-4 " >
-                        <a href="{% url 'room' product.id %} " style=" text-decoration: none;">
-                            <div class="card " style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
+        <!-- Masonry Layout for Products -->
+        <div class="container-md pb-5 pt-3">
+            <div class="grid" data-masonry='{"percentPosition": true }'>
+                {% for product in all_products %}
+                    <div class="grid-item">
+                        <a href="{% url 'room' product.id %}" style="text-decoration: none;">
+                            <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body text-light rounded-bottom " style="background-color: #6e398e;" >
-                                    <h4 class="card-title " ><strong>{{ product.name }}</strong></h4>
+                                <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
+                                    <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
                                     <p class="card-text">Price: ${{ product.price }}</p>
                                 </div>
                             </div>
@@ -103,13 +140,35 @@
                 {% endfor %}
             </div>
         </div>
+
+    
+    <!-- Audio Products -->
+    <div class="container-md border-2 border-bottom border-top pb-5 pt-3">
+        <h2 style="color: #210B2C;" class="mb-4"><strong>Audio</strong></h2>
+        <div class="row">
+            {% for product in audio_products %}
+            <div class="col-lg-3 col-md-4 col-sm-6  d-flex justify-content-center"> <!-- Adjusted column widths -->
+                <a href="{% url 'room' product.id %}" style="text-decoration: none;">
+                    <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
+                        <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                        <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
+                            <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
+                            <p class="card-text">Price: ${{ product.price }}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
         
         <!-- Home Products -->
-        <div class="container-md border-2 border-bottom pb-5 pt-5">
-            <h2 style="color: #210B2C;" class="mb-4"><strong>Home</strong></h2>
+        <div class="container-md border-2 border-bottom pb-5 pt-5 ">
+            <h2 style="color: #210B2C;" class="mb-4"><strong>Home & Living</strong></h2>
             <div class="row" >
                 {% for product in home_products %}
-                    <div class="col-lg-3 col-md-4" >
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center m-0"> <!-- Adjusted column widths -->
                         <a href="{% url 'room' product.id %}" style=" text-decoration: none;">
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);" >
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
@@ -129,7 +188,7 @@
             <h2 style="color: #210B2C;" class="mb-4"><strong>Accessories</strong></h2>
             <div class="row">
                 {% for product in accessories_products %}
-                    <div class="col-lg-3 col-md-4">
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center"> <!-- Adjusted column widths -->
                         <a href="{% url 'room' product.id %}" style=" text-decoration: none;">
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
