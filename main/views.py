@@ -37,10 +37,11 @@ def signin(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home') 
+            messages.success(request, 'Successfully signed in. Redirecting...')
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
     return render(request, 'signin.html')
+
 
 
 from .models import MyUser  
@@ -68,9 +69,10 @@ def signup(request):
 
         user = MyUser.objects.create_user(username=username, password=password)
         login(request, user)
-        return redirect('home') 
+        messages.success(request, 'Successfully signed up! Redirecting to home page...')
 
     return render(request, 'signup.html')
+
 
 
 def signout(request):
