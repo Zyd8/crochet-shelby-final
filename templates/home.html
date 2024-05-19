@@ -9,13 +9,11 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <style>
         .card {
-            width: 250px; 
-            height: 350px;
             margin-bottom: 20px; 
             margin-right: 20px;
         }
         .card img {
-            height: 200px;
+
             object-fit: cover;
         }
         .card-body {
@@ -26,14 +24,13 @@
         .card-text {
             text-decoration: none;
         }
-
         .grid {
-        display: flex;
-        flex-wrap: wrap;
-        margin: -8px; 
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .grid-item {
-            width: calc(33.33% - 16px);
+            width: calc(33% - 16px);
             margin: 8px;
             box-sizing: border-box;
             display: flex;
@@ -168,7 +165,7 @@
             <h2 style="color: #210B2C;" class="mb-4"><strong>Home & Living</strong></h2>
             <div class="row" >
                 {% for product in home_products %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center m-0"> <!-- Adjusted column widths -->
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center p-0"> <!-- Adjusted column widths -->
                         <a href="{% url 'room' product.id %}" style=" text-decoration: none;">
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);" >
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
