@@ -141,27 +141,39 @@ def cart(request):
         gcash_number = request.POST.get('gcash_number')
         shipping_address = request.POST.get('address')
         
-        cart = Cart.objects.get(id=cart_id)
-        cart.save() 
+        if len(gcash_number) != 11 or not gcash_number.isdigit():
+            messages.error(request, 'Invalid GCash number. It should be an 11-digit number.')
+            return redirect('cart')
         
-        order = Order.objects.create(user=request.user, contact_number=gcash_number, shipping_address=shipping_address, total_price=cart.total_price)
+        cart = get_object_or_404(Cart, id=cart_id)
+        cart.save()
+        
+        order = Order.objects.create(
+            user=request.user,
+            contact_number=gcash_number,
+            shipping_address=shipping_address,
+            total_price=cart.total_price
+        )
         
         for cart_item in cart.cartitem_set.all():
-            OrderItem.objects.create(order=order, product=cart_item.product, quantity=cart_item.quantity, additional_notes=cart_item.additional_notes)
-   
-        cart.delete()  
+            OrderItem.objects.create(
+                order=order,
+                product=cart_item.product,
+                quantity=cart_item.quantity,
+                additional_notes=cart_item.additional_notes
+            )
         
-        return render(request, 'payment.html')
+        cart.delete()
         
+        return redirect('payment')
+    
     else:
         cart_items = CartItem.objects.filter(order__user=request.user)
         
-        if not cart_items:
-            has_cart = False
-        else:
-            has_cart = True
-            for item in cart_items:
-                item.total = item.product.price * item.quantity
+        has_cart = cart_items.exists()
+        
+        for item in cart_items:
+            item.total = item.product.price * item.quantity
         
         cart, created = Cart.objects.get_or_create(user=request.user)
         
