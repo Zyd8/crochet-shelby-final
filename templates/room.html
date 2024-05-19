@@ -111,8 +111,8 @@
                     <br>
                     <div class="form-group">
                         <label for="additional_notes" class="text-body-secondary">Customization Notes:<br></label>
-                        <label for="additional_notes" class="text-body-secondary text-muted">You can specify the measurements, colors, etc., as needed </label>
-                        <textarea id="additional_notes" name="additional_notes" class="form-control" style="border-color: #55286F;" rows="3"></textarea>
+                        <label for="additional_notes" class="text-body-secondary text-muted">Specify the measurements, colors, etc., as needed </label>
+                        <textarea id="additional_notes" name="additional_notes" class="form-control" style="border-color: #55286F;" rows="3" required></textarea>
                     </div>
                     <br>
                     <div data-bs-toggle="tooltip" title="{% if not request.user.is_authenticated %}You need to Sign in first{% endif %}">
