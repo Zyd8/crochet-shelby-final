@@ -28,6 +28,8 @@ def room(request, product_id):
 
 
 def signin(request):
+    if request.GET.get('next'):
+        messages.error(request, 'You need to sign in first.')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
