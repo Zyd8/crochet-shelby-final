@@ -76,6 +76,164 @@
             filter: blur(5px);
         }
     </style>
+     <style>
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            font-family: acumin-pro, system-ui, sans-serif;
+            margin: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            font-size: 14px;
+            background-color: #f4f4f4;
+            align-items: start;
+            min-height: 100vh;
+        }
+
+        .footer {
+            padding: 30px 0 20px 0;
+            color: white;
+            background: #55286F;
+            border-top: 1px solid #e5e5e5;
+            color: white;
+        }
+
+        .footer__inner {
+            display: flex;
+            flex-flow: row wrap;
+            color: white;
+        }
+
+        .footer__addr {
+            margin-right: 1.25em;
+            margin-bottom: 2em;
+            color: white;
+        }
+
+        .footer__logo {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .footer__addr h2 {
+            margin-top: 1.3em;
+            font-size: 15px;
+            font-weight: 400;
+            color: white;
+        }
+
+        .nav__title {
+            font-weight: 400;
+            font-size: 20px;
+            color: white;
+        }
+
+        .footer address {
+            font-style: normal;
+            color: #999;
+            color: white;
+        }
+
+        .footer__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            max-width: max-content;
+            background-color: white;
+            border-radius: 100px;
+            color: black;
+            line-height: 0;
+            margin: 0.6em 0;
+            font-size: 1rem;
+            padding: 0 1.3em;
+            margin-left: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer__btn:hover {
+        transform: scale(1.3);
+        }
+
+
+        .footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer li {
+            line-height: 2em;
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+        .footer__nav {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .footer__nav > * {
+            flex: 1 50%;
+            margin-right: 1.25em;
+        }
+
+        .nav__ul a {
+            color: #999;
+            transition: transform 0.3s ease, fill 0.3s ease;
+        }
+        
+        .nav__ul a:hover{
+            transform: scale(1.5);
+        }
+
+        .nav__ul--extra {
+            column-count: 2;
+            column-gap: 1.25em;
+        }
+
+        .hover-animate {
+        transition: transform 0.3s ease, fill 0.3s ease;
+        }
+
+         .hover-animate:hover {
+        transform: scale(1.3);
+         }
+
+
+        @media screen and (min-width: 24.375em) {
+            .legal .legal__links {
+                margin-left: auto;
+            }
+        }
+
+        @media screen and (min-width: 40.375em) {
+            .footer__nav > * {
+                flex: 1;
+            }
+
+            .nav__item--extra {
+                flex-grow: 2;
+            }
+
+            .footer__addr {
+                flex: 1 0px;
+            }
+
+            .footer__nav {
+                flex: 2 0px;
+            }
+        }
+    </style>
      <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 </head>
 <body>
@@ -252,6 +410,65 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
+
+    <!--footer-->
+    <footer class="footer">
+        <div class="container-lg">
+            <div class="footer__inner">
+                <div class="footer__addr">
+                    <h1 class="text-light" style="font-size: 2rem; margin-bottom: 40px; line-height: 2;">Shelby Lorraine's Crochet</h1>
+                    <address class="text-light mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-telephone-fill hover-animate" viewBox="0 0 16 16" style="margin-right: 75px; margin-left: 20px;">
+                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                            </svg>
+                        <a href="https://www.facebook.com/yurriel2020" style="color: inherit;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-facebook hover-animate" viewBox="0 0 16 16" style="margin-right: 75px">
+                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/shelbylorraines_crochet/" style="color: inherit;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-instagram hover-animate" viewBox="0 0 16 16">
+                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                            </svg>
+                        </a><br><br>
+                        <p>+63-917-715-4707</p>
+                        
+                        <a class="footer__btn mt-4" href="https://mail.google.com/mail/u/0/#inbox">Email Us</a>
+                    </address>
+                </div>
+                
+                <ul class="footer__nav ">
+                    <li class="nav__item">
+                        <h2 class="nav__title">Home</h2>
+                        <ul class="nav__ul">
+                            <li style="font-size: 20px;"><a href="#">Products</a></li>
+                            <li style="font-size: 20px;"><a href="#aud">Audio</a></li>
+                            <li style="font-size: 20px;" ><a href="#hl">Home & Living</a></li>
+                            <li style="font-size: 20px;" ><a href="#acc">Accessories</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                    <h2 class="nav__title">Cart</h2>
+                        <ul class="nav__ul">
+                            <li style="font-size: 20px;"><a href="cart.html">Current Cart</a></li>
+                            <li style="font-size: 20px;"><a href="cart.html">Product</a></li>
+                            <li style="font-size: 20px;" ><a href="cart.html">Quantity</a></li>
+                            <li style="font-size: 20px;"><a href="cart.html">Total Price</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav__item">
+                    <h2 class="nav__title">Orders</h2>
+                        <ul class="nav__ul">
+                            <li style="font-size: 20px;"><a href="orders.html">Pending</a></li>
+                            <li style="font-size: 20px;"><a href="orders.html">Cancelled</a></li>
+                            <li style="font-size: 20px;"><a href="orders.html">Shipped</a></li>
+                            <li style="font-size: 20px;"><a href="orders.html">Delivered</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
