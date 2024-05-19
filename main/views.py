@@ -95,7 +95,8 @@ def create_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')  
+            messages.success(request, 'Crochet Product created successfully.') 
+            return redirect('create_product')  
     else:
         form = ProductForm()
     return render(request, 'create_product.html', {'form': form})
