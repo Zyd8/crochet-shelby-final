@@ -78,6 +78,16 @@
 
     </div>
 
+    <div class="container-md m-4">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a style=" text-decoration: none; color:#55286F" href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Cart</li>
+            </ol>
+        </nav>
+    </div>
+
+
 {% if has_cart %}
     <div class="container-lg">
         <div class="row justify-content-center mt-5">
