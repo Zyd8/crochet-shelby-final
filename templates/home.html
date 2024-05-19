@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <style>
+        @font-face {
+            font-family: 'primary';
+            src: url('/static/fonts/brittany/BrittanySignature.ttf') format('truetype');
+        }
+        h2, h1 {
+            font-size: 3rem;
+            font-family: 'primary', sans-serif;
+            color: #4C3C32
+        }
+        @font-face {
+            font-family: 'secondary';
+            src: url('/static/fonts/roboto/Roboto-Light.ttf') format('truetype');
+        }
+        body {
+            font-family: 'secondary';
+        }
         .card {
             margin-bottom: 20px; 
             margin-right: 20px;
@@ -114,7 +130,7 @@
     <div class="container-lg mt-5 mb-5">
 
         <div class="border-2 border-bottom container-md mb-4 text-center">
-        <h1 style="color: #210B2C;"><strong>Products</strong></h1>
+        <h1 style="color: #210B2C;">Products</h1>
         <p><small class="text-secondary">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
         </div>
 
@@ -127,7 +143,7 @@
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
-                                    <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
+                                    <h5 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
@@ -140,7 +156,13 @@
     
     <!-- Audio Products -->
     <div class="container-md border-2 border-bottom border-top pb-5 pt-3">
-        <h2 style="color: #210B2C;" class="mb-4"><strong>Audio</strong></h2>
+
+
+        <div class="border-2 container-md mb-4 mt-5 text-center">
+            <h1 style="color: #210B2C;">Audio</h1>
+            <p><small class="text-secondary">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+        </div>
+
         <div class="row">
             {% for product in audio_products %}
             <div class="col-lg-3 col-md-4 col-sm-6  d-flex justify-content-center"> <!-- Adjusted column widths -->
@@ -148,7 +170,7 @@
                     <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
                         <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                         <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
-                            <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
+                            <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">Price: ₱{{ product.price }}</p>
                         </div>
                     </div>
@@ -161,7 +183,12 @@
         
         <!-- Home Products -->
         <div class="container-md border-2 border-bottom pb-5 pt-5 ">
-            <h2 style="color: #210B2C;" class="mb-4"><strong>Home & Living</strong></h2>
+            
+            <div class="border-2 container-md mb-4 text-center">
+                <h1 style="color: #210B2C;">Home and Living</h1>
+                <p><small class="text-secondary">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+            </div>
+
             <div class="row" >
                 {% for product in home_products %}
                     <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center p-0"> <!-- Adjusted column widths -->
@@ -169,7 +196,7 @@
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);" >
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
-                                    <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
+                                    <h5 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
@@ -181,7 +208,12 @@
 
         <!-- Accessories Products -->
         <div class="container-md border-2 border-bottom pb-5 pt-5">
-            <h2 style="color: #210B2C;" class="mb-4"><strong>Accessories</strong></h2>
+        
+            <div class="border-2 container-md mb-4 text-center">
+                <h1 style="color: #210B2C;">Accessories</h1>
+                <p><small class="text-secondary">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+            </div>
+
             <div class="row">
                 {% for product in accessories_products %}
                     <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center"> <!-- Adjusted column widths -->
@@ -189,7 +221,7 @@
                             <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
-                                    <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
+                                    <h5 class="card-title">{{ product.name }}</h5>
                                     <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
