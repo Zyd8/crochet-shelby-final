@@ -128,7 +128,7 @@
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
                                     <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
-                                    <p class="card-text">Price: ${{ product.price }}</p>
+                                    <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
@@ -149,7 +149,7 @@
                         <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                         <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
                             <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
-                            <p class="card-text">Price: ${{ product.price }}</p>
+                            <p class="card-text">Price: ₱{{ product.price }}</p>
                         </div>
                     </div>
                 </a>
@@ -170,7 +170,7 @@
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
                                     <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
-                                    <p class="card-text">Price: ${{ product.price }}</p>
+                                    <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
@@ -190,7 +190,7 @@
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
                                     <h4 class="card-title"><strong>{{ product.name }}</strong></h4>
-                                    <p class="card-text">Price: ${{ product.price }}</p>
+                                    <p class="card-text">Price: ₱{{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
@@ -199,6 +199,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry(grid, {
+                itemSelector: '.grid-item',
+                percentPosition: true
+            });
+            grid.style.display = 'block';
+        });
+
+        window.addEventListener('resize', function() {
+            var grid = document.querySelector('.grid');
+            if (grid) {
+                Masonry.data(grid).layout();
+            }
+        });
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
 
 </body>
 </html>
