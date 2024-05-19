@@ -17,7 +17,6 @@
             object-fit: cover;
         }
         .card-body {
-            height: 100px;
             overflow: hidden; 
         }
         .card-title,
@@ -200,6 +199,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry(grid, {
+                itemSelector: '.grid-item',
+                percentPosition: true
+            });
+            grid.style.display = 'block';
+        });
+
+        window.addEventListener('resize', function() {
+            var grid = document.querySelector('.grid');
+            if (grid) {
+                Masonry.data(grid).layout();
+            }
+        });
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
 
 </body>
 </html>

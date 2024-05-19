@@ -12,9 +12,9 @@
             background-color: #D8B4E2 !important;
         }
 
-        .breadcrumb {
+        /* .breadcrumb {
             --bs-breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='1.5' fill='currentColor'/%3E%3C/svg%3E");
-        }
+        } */
     </style>
 </head>
 <body>
@@ -59,6 +59,15 @@
         </div>
     </nav>
 
+    <div class="container-md m-4">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a style=" text-decoration: none; color:#55286F" href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Orders</li>
+            </ol>
+        </nav>
+    </div>
+
 
     <section class="container-lg mt-5">
         <h2 class="d-flex justify-content-center">ORDERS</h2>
@@ -91,7 +100,7 @@
                                                 <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
                                             {% endfor %}
                                         </ul>
-                                        <p class="text-end">Total Price: ${{ order.total_price }}</p>
+                                        <p class="text-end">Total Price: ₱{{ order.total_price }}</p>
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -126,7 +135,7 @@
                                                 <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
                                             {% endfor %}
                                         </ul>
-                                        <p class="text-end">Total Price: ${{ order.total_price }}</p>
+                                        <p class="text-end">Total Price: ₱{{ order.total_price }}</p>
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -159,7 +168,7 @@
                                                 <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
                                             {% endfor %}
                                         </ul>
-                                        <p class="text-end">Total Price: ${{ order.total_price }}</p>
+                                        <p class="text-end">Total Price: ₱{{ order.total_price }}</p>
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -192,7 +201,7 @@
                                                 <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
                                             {% endfor %}
                                         </ul>
-                                        <p class="text-end">Total Price: ${{ order.total_price }}</p>
+                                        <p class="text-end">Total Price: ₱{{ order.total_price }}</p>
                                     </li>
                                     {% endfor %}
                                 </ul>

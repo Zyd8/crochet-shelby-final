@@ -68,11 +68,20 @@
             </div>
         </div>
     </nav>
+
+    <div class="container-md m-4">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a style=" text-decoration: none; color:#55286F" href="{% url 'home' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Room</li>
+            </ol>
+        </nav>
+    </div>
     
 
-    <div class="container mt-5 my-5">
+    <div class="container mt-5 my-5 ">
         <div class="row ">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3 d-flex justify-content-center">
                 <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -97,9 +106,9 @@
             </div>
             <div class="col-md-6 px-3">
                 <h1 style="color:#55286F;"><strong>{{ product.name }}</strong></h1>
-                <p class=" fs-5 py-2" style=" color:#55286F;"><strong>Price: ${{ product.price }}</strong></p>
+                <p class=" fs-5 py-2" style=" color:#55286F;"><strong>Price: ₱{{ product.price }}</strong></p>
                 <hr>
-                <p class="text-body-secondary"> {{ product.description }}</p>
+                <pre class="text-body-secondary">{{ product.description }}</pre>
                 <hr>
                 <form method="post">
                     {% csrf_token %}
