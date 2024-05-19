@@ -76,6 +76,21 @@
         </div>
     </nav>
 
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert 
+            {% if message.tags == 'success' %}
+                alert-success
+            {% elif message.tags == 'error' %}
+                alert-danger
+            {% endif %}
+            alert-dismissible fade show p-4" role="alert">
+            <strong>{% if message.tags == 'success' %}Success!{% elif message.tags == 'error' %}Error!{% endif %}</strong> {{ message }}. You can check it <a href="{% url 'cart' %}" class="alert-link">here</a>
+            <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    {% endif %}
+
     <div class="container-md m-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">

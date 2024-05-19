@@ -74,7 +74,6 @@ def signup(request):
     return render(request, 'signup.html')
 
 
-
 def signout(request):
     logout(request)
     return redirect('home')
@@ -125,6 +124,8 @@ def room(request, product_id):
         
         cart.save()
         
+        messages.success(request, 'Item added to cart successfully!')
+        
         return redirect('room', product_id=product_id)
     
     return render(request, 'room.html', {'product': product})
@@ -135,7 +136,6 @@ from django.shortcuts import redirect
 
 @login_required
 def cart(request):
-    print(request.user)  # Debugging statement
     if request.method == 'POST':
         cart_id = request.POST.get('cart_id')
         gcash_number = request.POST.get('gcash_number')
