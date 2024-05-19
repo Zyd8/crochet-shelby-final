@@ -195,13 +195,14 @@
         {% elif message.tags == 'error' %}
             alert-warning
         {% endif %}
-        d-flex align-items-center p-4 m-0" role="alert">
+        d-flex align-items-center p-4 m-0 alert-dismissible fade show" role="alert">
         <svg class="bi flex-shrink-0 me-2" role="img" aria-label="{% if message.tags == 'success' %}Success{% elif message.tags == 'error' %}Warning{% endif %}:">
             <use xlink:href="{% if message.tags == 'success' %}#check-circle-fill{% elif message.tags == 'error' %}#exclamation-triangle-fill{% endif %}"/>
         </svg>
         <div>
             {{ message }}
         </div>
+        <button type="button" class="btn-close d-flex align-items-center mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endfor %}
 
