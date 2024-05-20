@@ -71,7 +71,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'orders' %}">Orders</a>
                         </li>
+                        <li class="nav-item nav-pills">
+                            <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'crocheter' %}">Crocheter</a>
+                        </li>
                     </ul>
+
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         {% if request.user.is_authenticated %}
                         <li class="nav-item">
