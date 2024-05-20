@@ -113,8 +113,8 @@
         }
 
         @media screen and (max-width: 768px) {
-            body{
-                margin-top: 250px;
+            #paymentContainer{
+                margin-top: 300px;
             }
         }
         .alert svg.bi {
@@ -144,7 +144,7 @@
         <button type="button" class="btn-close mt-2" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
-<div class="container-fluid d-flex align-items-center" style="height: 100vh;">
+<div class="container-fluid d-flex align-items-center" style="height: 100vh;" id="paymentContainer">
     <div>
         <div class="row">
             <div class="col-md-5">
@@ -158,7 +158,7 @@
                     <img src="{% static 'gcash2.jpg' %}" class="card-img" class="d-flex justify-content-center" id="gcash">
                 </div>
             </div>
-            <div class="col-md-7 d-flex align-items-center justify-content-center p-3" style="background-image: url(../static/Background.png); background-size: cover;">
+            <div class="col-md-7 d-flex align-items-center justify-content-center p-3" style="background-image: url(../static/Background.png); background-size: cover; border-radius: 10px;">
                 <div class="d-flex flex-column justify-content-around align-items-center text-light">
                     <div class="text-center mb-5">
                         <h1 id="text1">THANK YOU</h1>
