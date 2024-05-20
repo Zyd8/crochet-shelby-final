@@ -184,6 +184,15 @@ def cart(request):
     
 
 @login_required
+def remove_cart_item(request):
+    if request.method == 'POST':
+        item_id = request.POST.get('item_id')
+        cart_item = get_object_or_404(CartItem, id=item_id, order__user=request.user)
+        cart_item.delete()
+        messages.success(request, 'Item removed from cart.')
+        return redirect('cart')
+
+@login_required
 def orders(request):
 
     user_orders = Order.objects.filter(user=request.user)

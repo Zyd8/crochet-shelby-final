@@ -130,7 +130,7 @@
     {% endif %}
 
 
-{% if has_cart %}
+    {% if has_cart %}
     <div class="container-lg">
         <div class="row justify-content-center mt-5">
             <div class="col-lg-6">
@@ -147,6 +147,7 @@
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Total</th>
+                                    <th>Action</th> <!-- Added Action Column -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -157,6 +158,13 @@
                                     <td>{{ item.quantity }}</td>
                                     <td>₱{{ item.product.price }}</td>
                                     <td>₱{{ item.total }}</td>
+                                    <td>
+                                        <form method="post" action="{% url 'remove_cart_item' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="item_id" value="{{ item.id }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

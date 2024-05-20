@@ -15,4 +15,5 @@ urlpatterns = [
     path('orders/', views.orders, name="orders"),
     path('payment/', views.payment, name='payment'),
     path('crocheter/', views.crocheter, name='crocheter'),
+    path('remove_cart_item/', views.remove_cart_item, name='remove_cart_item'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
