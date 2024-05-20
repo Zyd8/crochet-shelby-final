@@ -28,7 +28,8 @@
             font-family: 'secondary';
         }
         .card {
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
+            margin: 5px;
         }
         .card img {
 
@@ -305,7 +306,7 @@
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
                                     <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">Price: ₱{{ product.price }}</p>
+                                    <p class="card-text"> ₱{{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
@@ -315,35 +316,37 @@
         </div>
 
     
-    <!-- Audio Products -->
-    <div class="container-fluid border-2 border-bottom border-top pb-5 pt-3">
+    <section id="aud">
+        <!-- Audio Products -->
+        <div class="container-fluid border-2 border-bottom border-top pb-5 pt-3">
 
 
-        <div class="border-2 container-md mb-4 mt-5 text-center">
-            <h1 style="color: #210B2C;">Audio</h1>
-            <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Explore our cozy audio accessories designed to keep you warm and stylish while enjoying your favorite tunes, perfect for those chilly days.
+            <div class="border-2 container-md mb-4 mt-5 text-center">
+                <h1 style="color: #210B2C;">Audio</h1>
+                <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Explore our cozy audio accessories designed to keep you warm and stylish while enjoying your favorite tunes, perfect for those chilly days.
 
-            </small></p>
-        </div>
-
-        <div class="row">
-            {% for product in audio_products %}
-            <div class="col-lg-3 col-md-4 col-sm-6  d-flex justify-content-center"> <!-- Adjusted column widths -->
-                <a href="{% url 'room' product.id %}" style="text-decoration: none;">
-                    <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
-                        <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
-                        <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">Price: ₱{{ product.price }}</p>
-                        </div>
-                    </div>
-                </a>
+                </small></p>
             </div>
-            {% endfor %}
-        </div>
-    </div>
 
-        
+            <div class="row">
+                {% for product in audio_products %}
+                <div class="col-lg-3 col-md-4 col-sm-6  d-flex justify-content-center"> <!-- Adjusted column widths -->
+                    <a href="{% url 'room' product.id %}" style="text-decoration: none;">
+                        <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
+                            <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                            <div class="card-body text-light rounded-bottom" style="background-color: #6e398e;">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text"> ₱{{ product.price }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="hl">
         <!-- Home Products -->
         <div class="container-fluid border-2 border-bottom pb-5 pt-5 ">
             
@@ -360,7 +363,7 @@
                                 <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
                                 <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
                                     <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">Price: ₱{{ product.price }}</p>
+                                    <p class="card-text"> ₱{{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
@@ -368,32 +371,36 @@
                 {% endfor %}
             </div>
         </div>
+    </section>
 
+
+    <section id="acc">
         <!-- Accessories Products -->
         <div class="container-fluid border-2 border-bottom pb-5 pt-5">
-        
+            
             <div class="border-2 container-md mb-4 text-center">
                 <h1 style="color: #210B2C;">Accessories</h1>
                 <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Find delightful crochet accessories that add a whimsical and personalized touch to your everyday essentials, making each day a little more special.</small></p>
             </div>
 
-            <div class="row">
-                {% for product in accessories_products %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center"> <!-- Adjusted column widths -->
-                        <a href="{% url 'room' product.id %}" style=" text-decoration: none;">
-                            <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
-                                <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
-                                <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text">Price: ₱{{ product.price }}</p>
+                <div class="row">
+                    {% for product in accessories_products %}
+                        <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center"> <!-- Adjusted column widths -->
+                            <a href="{% url 'room' product.id %}" style=" text-decoration: none;">
+                                <div class="card" style="box-shadow: 0 0 128px rgba(0,0,0,0.1),0 32px 64px -48px rgb(0,0,0,0.5);">
+                                    <img src="{{ product.image1.url }}" class="card-img-top" alt="{{ product.name }}">
+                                    <div class="card-body text-light  rounded-bottom " style="background-color: #6e398e;" >
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text"> ₱{{ product.price }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -455,19 +462,19 @@
                     <li class="nav__item">
                     <h2 class="nav__title">Cart</h2>
                         <ul class="nav__ul">
-                            <li style="font-size: 20px;"><a href="cart.html">Current Cart</a></li>
-                            <li style="font-size: 20px;"><a href="cart.html">Product</a></li>
-                            <li style="font-size: 20px;" ><a href="cart.html">Quantity</a></li>
-                            <li style="font-size: 20px;"><a href="cart.html">Total Price</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'cart' %}">Current Cart</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'cart' %}">Product</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'cart' %}">Quantity</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'cart' %}">Total Price</a></li>
                         </ul>
                     </li>
                     <li class="nav__item">
                     <h2 class="nav__title">Orders</h2>
                         <ul class="nav__ul">
-                            <li style="font-size: 20px;"><a href="orders.html">Pending</a></li>
-                            <li style="font-size: 20px;"><a href="orders.html">Cancelled</a></li>
-                            <li style="font-size: 20px;"><a href="orders.html">Shipped</a></li>
-                            <li style="font-size: 20px;"><a href="orders.html">Delivered</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'orders' %}">Pending</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'orders' %}">Cancelled</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'orders' %}">Shipped</a></li>
+                            <li style="font-size: 20px;"><a href="{% url 'orders' %}">Delivered</a></li>
                         </ul>
                     </li>
                 </ul>
