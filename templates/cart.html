@@ -33,8 +33,8 @@
             justify-content: flex-end; 
         }
         .alert svg.bi {
-        width: 24px;
-        height: 24px;
+            width: 24px;
+            height: 24px;
         }
         /* body {
             background-color: rgb(138, 43, 226);
@@ -139,6 +139,7 @@
                             <thead>
                                 <tr>
                                     <th>Product</th>
+                                    <th></th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Total</th>
@@ -147,6 +148,7 @@
                             <tbody>
                                 {% for item in cart_items %}
                                 <tr>
+                                    <td><img src="{{ item.product.image1.url }}" alt="{{ item.product.name }}" style="height: 80px; width: 80px;"></td>
                                     <td>{{ item.product.name }}</td>
                                     <td>{{ item.quantity }}</td>
                                     <td>₱{{ item.product.price }}</td>

@@ -104,7 +104,7 @@
                                         <p class="mb-1">Products:</p>
                                         <ul>
                                             {% for order_item in order.orderitem_set.all %}
-                                                <li>{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
+                                                <li><img src="{{ order_item.product.image1.url }}" alt="{{ order_item.product.name }}" style="height: 80px; width: 80px; margin: 5px 10px 5px 0;">{{ order_item.product.name }} (Quantity: {{ order_item.quantity }})</li>
                                             {% endfor %}
                                         </ul>
                                         <p class="text-end">Total Price: ₱{{ order.total_price }}</p>
