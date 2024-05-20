@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'primary';
+            src: url('/static/fonts/brittany/BrittanySignature.ttf') format('truetype');
+        }
+        h2, h1 {
+            font-size: 3rem;
+            font-family: 'primary', sans-serif;
+            color: #4C3C32
+        }
+        @font-face {
+            font-family: 'secondary';
+            src: url('/static/fonts/roboto/Roboto-Light.ttf') format('truetype');
+        }
+        body {
+            font-family:'Sansita';
+        }
+        .card {
+            margin-bottom: 10px; 
+            margin: 5px;
+        }
+        .card img {
+
+            object-fit: cover;
+        }
+        .card-body {
+            overflow: hidden; 
+        }
+        .card-title,
+        .card-text {
+            text-decoration: none;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .grid-item {
+            width: calc(33% - 16px);
+            margin: 8px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+        .grid-item img {
+            width: 100%;
+            display: block;
+        }
+        @media (max-width: 992px) {
+            .grid-item {
+                width: calc(50% - 16px);
+            }
+        }
+        @media (max-width: 576px) {
+            .grid-item {
+                width: calc(100% - 16px);
+            }
+        }
+        .card-img {
+            transition: all 1s ease;
+            -webkit-filter: blur(0px);
+            filter: blur(0px);
+        }
+        .card:hover .card-img {
+            transition: all 1s ease;
+            -webkit-filter: blur(5px);
+            filter: blur(5px);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+</head>
+<body>
+    
+    <div class="container-fluid p-0">
+
+        <nav class="navbar navbar-expand-lg" style="background-color: #55286F;">
+            <div class="container-md py-0">
+                <a class="navbar-brand text-light fs-4 d-flex justify-content-center" href="{% url 'home' %}">
+                    <img src="{% static 'crochet-logo.png' %}" class="d-flex justify-content-center" width="100px" height="100px" alt="">
+                </a>
+                <button class="navbar-toggler bg-body-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item nav-pills">
+                            <a class="nav-link px-3 active fw-semibold bg-body-secondary ms-2" href="{% url 'home' %}">Home</a>
+                        </li>
+                        {% if request.user.is_staff %}
+                        <li class="nav-item nav-pills">
+                            <a class="nav-link px-3 text-light fw-semibold ms-2" href="{% url 'create_product' %}">Create</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'cart' %}">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'orders' %}">Orders</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'signout' %}">Sign out</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-light fw-semibold px-3 ms-2" href="{% url 'signin' %}">Sign in</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="card mb-3" style="max-width: 800px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{% static 'crocheter.png' %}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Meet the Crocheter!</h5>
+                        <p style="color:#55286F"><b>Lorilee C. Lanticse</b></p>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-body-secondary">"Sometimes you have to make a decision that will break your heart but will give peace to your soul."</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

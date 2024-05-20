@@ -207,3 +207,6 @@ def orders(request):
     
 def payment(request):
     return render(request, 'payment.html')
+
+def crocheter(request):
+    return render(request, 'crocheter.html')
