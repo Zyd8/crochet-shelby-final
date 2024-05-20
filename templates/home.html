@@ -29,7 +29,6 @@
         }
         .card {
             margin-bottom: 20px; 
-            margin-right: 20px;
         }
         .card img {
 
@@ -46,6 +45,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
         .grid-item {
             width: calc(33% - 16px);
@@ -288,15 +288,15 @@
      
 
     
-    <div class="container-lg mt-5 mb-5">
+    <div class="container-fluid mt-5 mb-5">
 
         <div class="border-2 border-bottom container-md mb-4 text-center">
         <h1 style="color: #210B2C;">Products</h1>
-        <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+        <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Discover our unique collection of handmade crochet items, crafted to bring warmth, style, and a touch of charm to your everyday life.</small></p>
         </div>
 
         <!-- Masonry Layout for Products -->
-        <div class="container-md pb-5 pt-3">
+        <div class="container-fluid pb-5 pt-3">
             <div class="grid" data-masonry='{"percentPosition": true }'>
                 {% for product in all_products %}
                     <div class="grid-item">
@@ -316,12 +316,14 @@
 
     
     <!-- Audio Products -->
-    <div class="container-md border-2 border-bottom border-top pb-5 pt-3">
+    <div class="container-fluid border-2 border-bottom border-top pb-5 pt-3">
 
 
         <div class="border-2 container-md mb-4 mt-5 text-center">
             <h1 style="color: #210B2C;">Audio</h1>
-            <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+            <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Explore our cozy audio accessories designed to keep you warm and stylish while enjoying your favorite tunes, perfect for those chilly days.
+
+            </small></p>
         </div>
 
         <div class="row">
@@ -343,11 +345,11 @@
 
         
         <!-- Home Products -->
-        <div class="container-md border-2 border-bottom pb-5 pt-5 ">
+        <div class="container-fluid border-2 border-bottom pb-5 pt-5 ">
             
             <div class="border-2 container-md mb-4 text-center">
                 <h1 style="color: #210B2C;">Home and Living</h1>
-                <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+                <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Enhance your living space with our beautifully crafted crochet items, bringing comfort and a cozy aesthetic to your home decor.</small></p>
             </div>
 
             <div class="row" >
@@ -368,11 +370,11 @@
         </div>
 
         <!-- Accessories Products -->
-        <div class="container-md border-2 border-bottom pb-5 pt-5">
+        <div class="container-fluid border-2 border-bottom pb-5 pt-5">
         
             <div class="border-2 container-md mb-4 text-center">
                 <h1 style="color: #210B2C;">Accessories</h1>
-                <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Discover our curated collection, where every click leads to a world of quality and innovation</small></p>
+                <p><small class="text-secondary" style="font-family: Sansita; font-size: 20px;">Find delightful crochet accessories that add a whimsical and personalized touch to your everyday essentials, making each day a little more special.</small></p>
             </div>
 
             <div class="row">
