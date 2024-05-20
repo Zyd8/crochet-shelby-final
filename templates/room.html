@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ product.name }}</title>
@@ -93,12 +96,15 @@
 
     <div class="container-md m-4">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" style="font-family: Sansita;">
               <li class="breadcrumb-item"><a style=" text-decoration: none; color:#55286F" href="{% url 'home' %}">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Room</li>
             </ol>
+            
         </nav>
+        <hr>
     </div>
+    
     
 
     <div class="container mt-5 my-5 ">
@@ -127,10 +133,10 @@
                 </div>
             </div>
             <div class="col-md-6 px-3">
-                <h1 style="color:#55286F;"><strong>{{ product.name }}</strong></h1>
-                <p class=" fs-5 py-2" style=" color:#55286F;"><strong>Price: ₱{{ product.price }}</strong></p>
+                <h1 style="color:#55286F; font-family: Sansita;"><strong>{{ product.name }}</strong></h1>
+                <p class=" fs-5 py-2 fw-light" style=" color:#6a5079;font-family: Sansita;"><strong><i>Price: ₱{{ product.price }}</i></strong></p>
                 <hr>
-                <pre class="text-body-secondary">{{ product.description }}</pre>
+                <pre class="text-body-secondary" >{{ product.description }}</pre>
                 <hr>
                 <form method="post">
                     {% csrf_token %}
